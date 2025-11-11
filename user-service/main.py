@@ -46,11 +46,8 @@ def post_user(newuser: CreateUser, db: Session=Depends(get_db)):
                      surname = newuser.surname,
                      age = newuser.age,
                      email = newuser.email)
-    
     db.add(db_user)
     db.commit()
-
-
     return db_user
 
 

@@ -1,0 +1,25 @@
+
+services:
+  book-service:
+    build:
+      context: ./book-service
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./book-service:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - user-service  
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./user-service:/app
+    environment:
+      - PYTHONUNBUFFERED=1
